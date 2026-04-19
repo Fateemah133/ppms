@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MALARIA PROJECT</title>
+    <link rel="stylesheet" href="userstyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=close" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+</head>
+
+<body>
+    <div class="container">
+        <!--aside section start-->
+        <div class="aside">
+            <div class="top">
+
+                <div class="logo">
+                   
+                     <img src="./image/logo.png" alt="image" width="90" height="70">
+                      <!-- <h2>M<span class="danger">ALARIA</span></h2> -->
+                </div>
+                <div class="close" id="close_btn">
+                    <span class="material-symbols-sharp">
+                        close</span>
+                </div>
+            </div>
+            <!--end top-->
+
+            <div class="sidebar">
+                <a href="#">
+                    <span class="material-symbols-sharp" data-screen="active">
+                        <i class="material-icons">dashboard</i></span>
+                    <h3>Dashboard</h3>
+                </a>
+
+                <a href="#">
+                    <span class="material-symbols-sharp">
+                        <i class="material-icons">add_alert</i></span>
+                    <h3>Alerts</h3>
+                    <span class="alert_count">14</span>
+                </a>
+
+                <a href="#" class="active">
+                    <span class="material-icons-outlined">
+                        <i class="material-icons">person_outline</i>
+                    </span>
+                    <h3>Communities</h3>
+                </a>
+
+                <a href="#">
+                    <span class="material-icons-outlined">
+                        <i class="material-icons">insights</i>
+                    </span>
+                    <h3>Analytics</h3>
+                </a>
+
+                <a href="#">
+                    <span class="material-icons-outlined">
+                        <i class="material-icons">report</i></span>
+                    <h3>Reports</h3>
+                </a>
+
+                <a href="#">
+                    <span class="material-icons-outlined">
+                        <i class="material-icons">settings</i></span>
+                    <h3>Settings</h3>
+                </a>
+
+                <a href="#">
+                    <span class="material-icons-outlined">
+                        <i class="material-icons">logout</i></span>
+                    <h3>Logout</h3>
+                </a>
+
+            </div>
+        </div>
+        <!--aside section end here-->
+
+
+        <!--main section start-->
+        <div class="main">
+            <div class="search">
+                <span class="search-icon material-icons-outlined"><i class="material-icons">search</i></span>
+                <input class="search-input" type="search" name="search" id="search">
+            </div>   
+            <h1>Health Authority/Admin Dashboard</h1>
+            
+
+
+            <!--start all cases-->
+            <div class="cases">
+
+                <div class="tot-cases">
+                    <span class="material-icons-outlined"><i class="material-icons">trending_up</i></span>
+                    <div class="middle">
+                        <div class="left">
+                            <h3>Total Cases</h3>
+                            <h1>1000</h1>
+                        </div>
+                        <div class="progress">
+                            <svg>
+                                <circle r="30" cy="40" cx="40"></circle>
+                            </svg>
+                            <div class="number">80</div>
+                        </div>
+                    </div>
+                    <small>Last 24 hours</small>
+                </div>
+
+
+                <div class="high-risk">
+                    <span class="material-icons-outlined"><i class="material-icons">trending_up</i></span>
+                    <div class="middle">
+                        <div class="left">
+                            <h3>High Risk Areas</h3>
+                            <h1>12<h3>Areas </h3></h1>
+                        </div>
+                        <div class="progress">
+                            <svg>
+                                <circle r="30" cy="40" cx="40"></circle>
+                            </svg>
+                            <div class="number">80</div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="alert_cases">
+                    <span class="material-icons-outlined"><i class="material-icons">trending_up</i></span>
+                    <div class="middle">
+                        <div class="leftt">
+                            <h3>Active Alerts</h3>
+                            <h1>9 <h3>New Alerts </h3></h1>
+                        </div>
+                        <div class="progress">
+                            <svg>
+                                <circle r="30" cy="40" cx="40"></circle>
+                            </svg>
+                            <div class="number">80</div>
+                        </div>
+                    </div>
+                    <small>Last 24 hours</small>
+                </div>
+
+                
+            </div>
+
+            <!--end all cases-->
+
+
+            <!--start map here-->
+            <div>
+                <h3>Risk Map</h3>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d253682.46310757624!2d3.1191427001003134!3d6.5483693711779205!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8b2ae68280c1%3A0xdc9e87a367c3d9cb!2sLagos!5e0!3m2!1sen!2sng!4v1776366717135!5m2!1sen!2sng"
+                    width="800" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <!--end map here-->
+        </div>
+
+        <!--main section end-->
+
+
+
+
+        <!--right section start-->
+        <div class="right">
+            <div class="top">
+                <button id="menu_bar">
+                    <span class="material-icons-outlined"><i class="material-icons">menu</i></span>
+                </button>
+                <div class="theme-toggler">
+                    <span class="material-icons-outlined"><i class="material-icons">light_mode</i></span>
+                    <span class="material-icons-outlined"><i class="material-icons">dark_mode</i></span>
+                </div>
+                <div class="profile">
+                    <div class="info">
+                        <p><b>teemah</b></p>
+                        <p>Admin</p>
+                        <small class="text-muted"></small>
+                    </div>
+                    <div class="profile-photo">
+                        <img src="images.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+            <!--endtop-->
+
+            <!--start recent update-->
+            <div class="recent_updates">
+
+                <div class="upp">
+                    <h2>Recent Alerts</h2>
+                    <button type="button">
+                     <span class="material-icons-outlined"><i class="material-icons">filter</i></span>
+                     </button>
+                </div>
+
+                <div class="right_text">
+                    
+                        <div class="alerts-top">
+                            <span class="material-icons-outlined"><i class="material-icons">filter</i></span>
+                                <h4>Lagos Mainland</h4>
+                                <i>High Risk</i>
+                        </div>
+
+
+                   
+
+                   
+
+                
+                    
+                </div>
+
+
+            </div>
+        </div>
+        <!--end right section-->
+
+
+
+
+    </div>
+
+<section>
+    <!-- start the section -->
+     <div class="sub-sect">
+            <div class="left-risking">High-Risk</div>
+            <button type="button">Deploy Nets</button>
+            <button type="button">Send SMS Alert</button>
+            <button  class="schedule" type="button">Schedule Spraying</button>
+            <span class="material-icons-outlined"><i class="material-icons">trending_up</i></span>  
+       
+        </div>
+
+     
+     <div class="recent">
+        <div class="sub-recent">
+            <h1>High-Risk Communities</h1>
+            <button>button here</button>
+        </div>
+        
+        
+
+        <table>
+            <thead>
+                <tr>
+                <th>Community</th>
+                <th>Risk score</th>
+                <th>Population</th>
+                <th>Actions</th>
+                <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>Lagos Mainland</td>
+                    <td>98</td>
+                    <td>1.5M</td>
+                    <td><button type="button">Deploy Nets</button></td>
+                    <td><button type="button">Deploy Nets</button></td>
+                </tr>
+
+                <tr>
+                    <td>Ibadan</td>
+                    <td>82</td>
+                    <td>2.6M</td>
+                    <td><button type="button">Deploy Nets</button></td>
+                    <td><button type="button">Deploy Nets</button></td>
+                </tr>
+
+                <tr>
+                    <td>Kano</td>
+                    <td>88</td>
+                    <td>2.3M</td>
+                    <td><button type="button">Deploy Nets</button></td>
+                    <td><button type="button">Deploy Nets</button></td>
+                </tr>
+            </tbody>
+        </table>
+     </div>
+    
+<div class="charts">
+   <div class="chart-card">
+    <h2 class="chart-title">emergency cases</h2>
+    <div id="bar-chart"></div>
+   </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</section>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/5.3.5/apexcharts.min.js" integrity="sha512-dC9VWzoPczd9ppMRE/FJohD2fB7ByZ0VVLVCMlOrM2LHqoFFuVGcWch1riUcwKJuhWx8OhPjhJsAHrp4CP4gtw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="chart.js"></script>
+</body>
+
+</html>
