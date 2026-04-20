@@ -14,6 +14,9 @@
 
     <body data-theme="light">
         <div class="admin-container">
+            <!-- Sidebar Overlay -->
+            <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
             <!-- Sidebar Navigation -->
             <aside class="sidebar">
                 <div class="sidebar-header">
@@ -26,38 +29,38 @@
                     </button>
                 </div>
                 <ul class="nav-menu">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
+                    <li class="nav-item" data-screen="dashboard">
+                        <a href="#" class="nav-link active">
                             <i class="fas fa-th-large"></i>
                             <span>Dashboard</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link active">
+                    <li class="nav-item" data-screen="alerts">
+                        <a href="#" class="nav-link">
                             <i class="fas fa-bell"></i>
                             <span>Alerts</span>
                             <span class="nav-badge">9</span>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" data-screen="communities">
                         <a href="#" class="nav-link">
                             <i class="fas fa-users"></i>
                             <span>Communities</span>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" data-screen="interventions">
                         <a href="#" class="nav-link">
                             <i class="fas fa-shield-virus"></i>
                             <span>Interventions</span>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" data-screen="reports">
                         <a href="#" class="nav-link">
                             <i class="fas fa-file-alt"></i>
                             <span>Reports</span>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" data-screen="settings">
                         <a href="#" class="nav-link">
                             <i class="fas fa-cog"></i>
                             <span>Settings</span>
@@ -108,177 +111,432 @@
                 </header>
 
                 <div class="dashboard-title">
-                    <h1>Health Authority / Alerts</h1>
-                    <button class="filter-btn">
-                        <i class="fas fa-sliders-h"></i>
-                        Filter
-                    </button>
+                    <h3 id="page-title">Health Authority / Dashboard</h3>
                 </div>
 
-                <!-- Stats Grid -->
-                <section class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-info">
-                            <h3>Total Cases</h3>
-                            <div class="value">5,342</div>
+                <!-- Dashboard Screen -->
+                <div id="dashboard-screen" class="admin-screen active">
+                    <!-- Stats Grid -->
+                    <section class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-info">
+                                <h3>National Recovery Rate</h3>
+                                <div class="value">94.2%</div>
+                            </div>
+                            <div class="stat-icon green">
+                                <i class="fas fa-heartbeat"></i>
+                            </div>
                         </div>
-                        <div class="stat-icon blue">
-                            <i class="fas fa-chart-line"></i>
+                        <div class="stat-card">
+                            <div class="stat-info">
+                                <h3>Total Communities</h3>
+                                <div class="value">842 Zones</div>
+                            </div>
+                            <div class="stat-icon blue">
+                                <i class="fas fa-map-marked-alt"></i>
+                            </div>
                         </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-info">
-                            <h3>High Risk Areas</h3>
-                            <div class="value">12 Areas</div>
+                        <div class="stat-card">
+                            <div class="stat-info">
+                                <h3>Active Teams</h3>
+                                <div class="value">124 Units</div>
+                            </div>
+                            <div class="stat-icon teal">
+                                <i class="fas fa-users-cog"></i>
+                            </div>
                         </div>
-                        <div class="stat-icon red">
-                            <i class="fas fa-exclamation-triangle"></i>
+                        <div class="stat-card">
+                            <div class="stat-info">
+                                <h3>Supply Level</h3>
+                                <div class="value">82% Overall</div>
+                            </div>
+                            <div class="stat-icon orange">
+                                <i class="fas fa-boxes"></i>
+                            </div>
                         </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-info">
-                            <h3>Active Alerts</h3>
-                            <div class="value">9 New Alerts</div>
-                        </div>
-                        <div class="stat-icon teal">
-                            <i class="fas fa-envelope-open-text"></i>
-                        </div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-info">
-                            <h3>Recent Interventions</h3>
-                            <div class="value">1,230</div>
-                        </div>
-                        <div class="stat-icon green">
-                            <i class="fas fa-clipboard-check"></i>
-                        </div>
-                    </div>
-                </section>
+                    </section>
 
-                <!-- Middle Row: Map & Alerts -->
-                <section class="middle-row">
-                    <div class="map-panel">
-                        <div class="map-container">
-                            <iframe class="map-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d253682.46310757624!2d3.1191427001003134!3d6.5483693711779205!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8b2ae68280c1%3A0xdc9e87a367c3d9cb!2sLagos!5e0!3m2!1sen!2sng!4v1776366717135!5m2!1sen!2sng" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-                            </iframe>
+                    <section class="middle-row">
+                        <div class="map-panel">
+                            <div class="panel-header">
+                                <h2>National Health Overview</h2>
+                            </div>
+                            <div class="map-container">
+                                <iframe class="map-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4047462.616680786!2d4.606990666666666!3d8.675277!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104e0baf7da48d0d%3A0x99a8de21e2a048d0!2sNigeria!5e0!3m2!1sen!2sng!4v1776366717135!5m2!1sen!2sng" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                            </div>
                         </div>
-                    </div>
+                        <div class="activity-panel">
+                            <div class="panel-header">
+                                <h2>System Activity</h2>
+                            </div>
+                            <div class="activity-list">
+                                <div class="activity-item">
+                                    <div class="item-icon"><i class="fas fa-paper-plane"></i></div>
+                                    <div class="item-text">
+                                        <p>SMS Alert blast sent to <strong>Ojo District</strong></p>
+                                        <small>2 minutes ago</small>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="item-icon"><i class="fas fa-truck"></i></div>
+                                    <div class="item-text">
+                                        <p>Net Shipment #A42 dispatched to <strong>Ibadan</strong></p>
+                                        <small>15 minutes ago</small>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="item-icon"><i class="fas fa-user-check"></i></div>
+                                    <div class="item-text">
+                                        <p>New Field Team Lead assigned to <strong>Kano North</strong></p>
+                                        <small>1 hour ago</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
 
-                    <div class="alerts-panel">
-                        <div class="panel-header">
-                            <h2>Alerts</h2>
-                            <button class="icon-btn"><i class="fas fa-sliders-h"></i></button>
-                        </div>
-                        <div class="alerts-list">
-                            <div class="alert-card">
-                                <div class="alert-card-icon red">
-                                    <i class="fas fa-exclamation-triangle"></i>
-                                </div>
-                                <div class="alert-card-info">
-                                    <h4>Lagos Mainland</h4>
-                                    <span class="desc">High Risk</span>
-                                </div>
-                                <div class="alert-card-time">10m</div>
+                <!-- Alerts Screen -->
+                <div id="alerts-screen" class="admin-screen">
+                    <!-- Stats Grid -->
+                    <section class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-info">
+                                <h3>Total Cases</h3>
+                                <div class="value">5,342</div>
                             </div>
-                            <div class="alert-card">
-                                <div class="alert-card-icon orange">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                </div>
-                                <div class="alert-card-info">
-                                    <h4>Sapele</h4>
-                                    <span class="desc">Medium Risk</span>
-                                </div>
-                                <div class="alert-card-time">25m</div>
-                            </div>
-                            <div class="alert-card">
-                                <div class="alert-card-icon red">
-                                    <i class="fas fa-exclamation-triangle"></i>
-                                </div>
-                                <div class="alert-card-info">
-                                    <h4>Kano</h4>
-                                    <span class="desc">High Risk</span>
-                                </div>
-                                <div class="alert-card-time">1h</div>
-                            </div>
-                            <div class="alert-card">
-                                <div class="alert-card-icon green">
-                                    <i class="fas fa-check-circle"></i>
-                                </div>
-                                <div class="alert-card-info">
-                                    <h4>Enugu</h4>
-                                    <span class="desc">Medium Risk</span>
-                                </div>
-                                <div class="alert-card-time">2h</div>
+                            <div class="stat-icon blue">
+                                <i class="fas fa-chart-line"></i>
                             </div>
                         </div>
-                    </div>
-                </section>
+                        <div class="stat-card">
+                            <div class="stat-info">
+                                <h3>High Risk Areas</h3>
+                                <div class="value">12 Areas</div>
+                            </div>
+                            <div class="stat-icon red">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-info">
+                                <h3>Active Alerts</h3>
+                                <div class="value">9 New Alerts</div>
+                            </div>
+                            <div class="stat-icon teal">
+                                <i class="fas fa-envelope-open-text"></i>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-info">
+                                <h3>Recent Interventions</h3>
+                                <div class="value">1,230</div>
+                            </div>
+                            <div class="stat-icon green">
+                                <i class="fas fa-clipboard-check"></i>
+                            </div>
+                        </div>
+                    </section>
 
-                <!-- Bottom Row: Table & Charts -->
-                <section class="bottom-row">
-                    <div class="table-panel">
+                    <!-- Middle Row: Map & Alerts -->
+                    <section class="middle-row">
+                        <div class="map-panel">
+                            <div class="map-container">
+                                <iframe class="map-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d253682.46310757624!2d3.1191427001003134!3d6.5483693711779205!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8b2ae68280c1%3A0xdc9e87a367c3d9cb!2sLagos!5e0!3m2!1sen!2sng!4v1776366717135!5m2!1sen!2sng" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                                </iframe>
+                            </div>
+                        </div>
+
+                        <div class="alerts-panel">
+                            <div class="panel-header">
+                                <h2>Alerts</h2>
+                                <button class="icon-btn"><i class="fas fa-sliders-h"></i></button>
+                            </div>
+                            <div class="alerts-list">
+                                <div class="alert-card">
+                                    <div class="alert-card-icon red">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                    </div>
+                                    <div class="alert-card-info">
+                                        <h4>Lagos Mainland</h4>
+                                        <span class="desc">High Risk</span>
+                                    </div>
+                                    <div class="alert-card-time">10m</div>
+                                </div>
+                                <div class="alert-card">
+                                    <div class="alert-card-icon orange">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div class="alert-card-info">
+                                        <h4>Sapele</h4>
+                                        <span class="desc">Medium Risk</span>
+                                    </div>
+                                    <div class="alert-card-time">25m</div>
+                                </div>
+                                <div class="alert-card">
+                                    <div class="alert-card-icon red">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                    </div>
+                                    <div class="alert-card-info">
+                                        <h4>Kano</h4>
+                                        <span class="desc">High Risk</span>
+                                    </div>
+                                    <div class="alert-card-time">1h</div>
+                                </div>
+                                <div class="alert-card">
+                                    <div class="alert-card-icon green">
+                                        <i class="fas fa-check-circle"></i>
+                                    </div>
+                                    <div class="alert-card-info">
+                                        <h4>Enugu</h4>
+                                        <span class="desc">Medium Risk</span>
+                                    </div>
+                                    <div class="alert-card-time">2h</div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Bottom Row: Table & Charts -->
+                    <section class="bottom-row">
+                        <div class="table-panel">
+                            <div class="table-controls">
+                                <div class="table-title">
+                                    <h3>High-Risk Communities</h3>
+                                </div>
+                                <div class="table-actions">
+                                    <button class="action-pill active">High Risk</button>
+                                    <button class="action-pill">Deploy Nets</button>
+                                    <button class="action-pill">Send SMS Alert</button>
+                                    <button class="action-pill">Schedule Spraying</button>
+                                </div>
+                            </div>
+                            <table class="communities-table">
+                                <thead>
+                                    <tr>
+                                        <th>Community</th>
+                                        <th>Risk Score</th>
+                                        <th>Population</th>
+                                        <th>Actions</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Lagos Mainland</td>
+                                        <td>98</td>
+                                        <td>1.5M</td>
+                                        <td><span class="status-dot green"></span>Deploy Nets</td>
+                                        <td><button class="table-btn">Deploy Nets</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Ibadan</td>
+                                        <td>82</td>
+                                        <td>2.6M</td>
+                                        <td><span class="status-dot orange"></span>Deploy Nets</td>
+                                        <td><button class="table-btn">Deploy Nets</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Kano</td>
+                                        <td>88</td>
+                                        <td>2.3M</td>
+                                        <td><span class="status-dot orange"></span>Deploy Nets</td>
+                                        <td><button class="table-btn">Deploy Nets</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="pagination">
+                                <button class="page-btn"><i class="fas fa-chevron-left"></i></button>
+                                <button class="page-btn active">1</button>
+                                <button class="page-btn">2</button>
+                                <button class="page-btn"><i class="fas fa-chevron-right"></i></button>
+                            </div>
+                        </div>
+
+                        <div class="chart-panel">
+                            <div class="chart-header">
+                                <h2>Interventions Impact</h2>
+                            </div>
+                            <div id="interventions-chart" style="height: 300px;">
+                                <!-- Placeholder for ApexCharts -->
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Communities Screen -->
+                <div id="communities-screen" class="admin-screen">
+                    <div class="table-panel" style="width: 100%;">
                         <div class="table-controls">
                             <div class="table-title">
-                                <h3>High-Risk Communities</h3>
+                                <h3>National Communities Directory</h3>
                             </div>
-                            <div class="table-actions">
-                                <button class="action-pill active">High Risk</button>
-                                <button class="action-pill">Deploy Nets</button>
-                                <button class="action-pill">Send SMS Alert</button>
-                                <button class="action-pill">Schedule Spraying</button>
+                            <div class="search-bar" style="display: flex; margin-bottom: 20px;">
+                                <i class="fas fa-search"></i>
+                                <input type="text" placeholder="Filter by region, population, or risk level...">
                             </div>
                         </div>
                         <table class="communities-table">
                             <thead>
                                 <tr>
                                     <th>Community</th>
-                                    <th>Risk Score</th>
+                                    <th>Region</th>
                                     <th>Population</th>
-                                    <th>Actions</th>
-                                    <th>Actions</th>
+                                    <th>Risk Score</th>
+                                    <th>Trend</th>
+                                    <th>Intervention Status</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>Lagos Mainland</td>
-                                    <td>98</td>
+                                    <td>South West</td>
                                     <td>1.5M</td>
-                                    <td><span class="status-dot green"></span>Deploy Nets</td>
-                                    <td><button class="table-btn">Deploy Nets</button></td>
+                                    <td>98</td>
+                                    <td><i class="fas fa-arrow-up" style="color: var(--risk-high);"></i></td>
+                                    <td><span class="status-dot orange"></span>Pending Spraying</td>
+                                    <td><button class="table-btn">Details</button></td>
                                 </tr>
                                 <tr>
-                                    <td>Ibadan</td>
-                                    <td>82</td>
-                                    <td>2.6M</td>
-                                    <td><span class="status-dot orange"></span>Deploy Nets</td>
-                                    <td><button class="table-btn">Deploy Nets</button></td>
-                                </tr>
-                                <tr>
-                                    <td>Kano</td>
-                                    <td>88</td>
+                                    <td>Kano Central</td>
+                                    <td>North West</td>
                                     <td>2.3M</td>
-                                    <td><span class="status-dot orange"></span>Deploy Nets</td>
-                                    <td><button class="table-btn">Deploy Nets</button></td>
+                                    <td>88</td>
+                                    <td><i class="fas fa-arrow-down" style="color: var(--risk-low);"></i></td>
+                                    <td><span class="status-dot green"></span>Supply Stable</td>
+                                    <td><button class="table-btn">Details</button></td>
+                                </tr>
+                                <tr>
+                                    <td>Enugu East</td>
+                                    <td>South East</td>
+                                    <td>0.8M</td>
+                                    <td>45</td>
+                                    <td><i class="fas fa-minus" style="color: var(--text-muted);"></i></td>
+                                    <td><span class="status-dot green"></span>Full Coverage</td>
+                                    <td><button class="table-btn">Details</button></td>
                                 </tr>
                             </tbody>
                         </table>
-                        <div class="pagination">
-                            <button class="page-btn"><i class="fas fa-chevron-left"></i></button>
-                            <button class="page-btn active">1</button>
-                            <button class="page-btn">2</button>
-                            <button class="page-btn"><i class="fas fa-chevron-right"></i></button>
-                        </div>
                     </div>
+                </div>
 
+                <!-- Interventions Screen -->
+                <div id="interventions-screen" class="admin-screen">
+                    <section class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-info">
+                                <h3>Total Nets Distributed</h3>
+                                <div class="value">450k / 600k</div>
+                            </div>
+                            <div class="stat-icon blue"><i class="fas fa-shield-virus"></i></div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-info">
+                                <h3>Active Spraying Units</h3>
+                                <div class="value">42 Teams</div>
+                            </div>
+                            <div class="stat-icon teal"><i class="fas fa-faucet-drip"></i></div>
+                        </div>
+                    </section>
                     <div class="chart-panel">
                         <div class="chart-header">
-                            <h2>Interventions Impact</h2>
+                            <h2>Nationwide Distribution Progress</h2>
                         </div>
-                        <div id="interventions-chart" style="height: 300px;">
-                            <!-- Placeholder for ApexCharts -->
+                        <div id="intervention-progress-chart"></div>
+                    </div>
+                </div>
+
+                <!-- Reports Screen -->
+                <div id="reports-screen" class="admin-screen">
+                    <div class="middle-row">
+                        <div class="table-panel">
+                            <div class="panel-header">
+                                <h2>Monthly Analytics Review</h2>
+                            </div>
+                            <div style="display: flex; gap: 20px; align-items: center; justify-content: center; height: 200px; color: var(--text-muted);">
+                                <div style="text-align: center;">
+                                    <i class="fas fa-file-pdf" style="font-size: 3rem; color: #ef4444; margin-bottom: 10px; display: block;"></i>
+                                    <button class="btn-outline" style="padding: 8px 16px; border-radius: 6px; border: 1px solid var(--border-color); background: transparent;">Export Ministry PDF</button>
+                                </div>
+                                <div style="text-align: center;">
+                                    <i class="fas fa-file-excel" style="font-size: 3rem; color: #10b981; margin-bottom: 10px; display: block;"></i>
+                                    <button class="btn-outline" style="padding: 8px 16px; border-radius: 6px; border: 1px solid var(--border-color); background: transparent;">Download Raw CSV</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </section>
+                </div>
+
+                <!-- Settings Screen -->
+                <div id="settings-screen" class="admin-screen">
+                    <div class="settings-row">
+                        <div class="table-panel">
+                            <div class="panel-header" style="margin-bottom: 25px; border-bottom: 1px solid var(--border-color); padding-bottom: 15px;">
+                                <h2><i class="fas fa-user-shield" style="margin-right: 10px; color: var(--primary-color);"></i>Profile & Security</h2>
+                            </div>
+                            <div class="settings-form">
+                                <div class="form-group" style="margin-bottom: 20px;">
+                                    <label style="display: block; margin-bottom: 10px; font-weight: 600; color: var(--text-muted); font-size: 0.85rem;">Admin Name</label>
+                                    <input type="text" value="Admin John" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--main-bg); color: var(--text-main); font-size: 1rem;">
+                                </div>
+                                <div class="form-group" style="margin-bottom: 20px;">
+                                    <label style="display: block; margin-bottom: 10px; font-weight: 600; color: var(--text-muted); font-size: 0.85rem;">Email Address</label>
+                                    <input type="email" value="admin.john@health.gov.ng" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--main-bg); color: var(--text-main); font-size: 1rem;">
+                                </div>
+                                <div class="form-group" style="margin-bottom: 30px;">
+                                    <label style="display: block; margin-bottom: 10px; font-weight: 600; color: var(--text-muted); font-size: 0.85rem;">Reset Password</label>
+                                    <input type="password" placeholder="Enter new password" style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--main-bg); color: var(--text-main); font-size: 1rem;">
+                                </div>
+                                <button class="btn-primary" style="padding: 12px 24px; border-radius: 8px; border: none; cursor: pointer; width: 100%; font-weight: 600; font-size: 1rem;"><i class="fas fa-save" style="margin-right: 8px;"></i>Save Profile Changes</button>
+                            </div>
+                        </div>
+
+                        <div class="table-panel">
+                            <div class="panel-header" style="margin-bottom: 25px; border-bottom: 1px solid var(--border-color); padding-bottom: 15px;">
+                                <h2><i class="fas fa-sliders-h" style="margin-right: 10px; color: var(--primary-color);"></i>System Configuration</h2>
+                            </div>
+                            <div class="settings-form">
+                                <div class="form-group" style="margin-bottom: 30px;">
+                                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                                        <div>
+                                            <label style="display: block; font-weight: 600; color: var(--text-main); font-size: 0.95rem;">Alert Threshold (Risk Score)</label>
+                                            <small style="color: var(--text-muted); font-size: 0.75rem;">Determines when a community is flagged 'High Risk'</small>
+                                        </div>
+                                        <span style="background: var(--risk-high); color: white; padding: 4px 10px; border-radius: 12px; font-size: 0.8rem; font-weight: bold;">80+</span>
+                                    </div>
+                                    <input type="range" min="0" max="100" value="80" style="width: 100%; accent-color: var(--primary-color);">
+                                </div>
+
+                                <div style="margin-bottom: 20px;">
+                                    <label style="display: block; font-weight: 600; color: var(--text-main); font-size: 0.95rem; margin-bottom: 15px;">Notification Routing</label>
+
+                                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px; border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 10px; background: var(--main-bg);">
+                                        <div>
+                                            <div style="font-weight: 500;">SMS Blasts</div>
+                                            <small style="color: var(--text-muted);">Send SMS to community leaders on critical alerts</small>
+                                        </div>
+                                        <label class="theme-switch">
+                                            <input type="checkbox" checked>
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+
+                                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px; border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 10px; background: var(--main-bg);">
+                                        <div>
+                                            <div style="font-weight: 500;">Email Reports</div>
+                                            <small style="color: var(--text-muted);">Daily summaries sent to Ministry inbox</small>
+                                        </div>
+                                        <label class="theme-switch">
+                                            <input type="checkbox" checked>
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </main>
         </div>
 

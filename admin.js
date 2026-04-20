@@ -102,26 +102,111 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuToggle = document.querySelector('.menu-toggle-btn');
     const sidebarClose = document.querySelector('.sidebar-close-btn');
     const sidebar = document.querySelector('.sidebar');
+    const overlay = document.getElementById('sidebar-overlay');
     
     if (menuToggle) {
         menuToggle.addEventListener('click', () => {
             sidebar.classList.add('open');
+            if (overlay) overlay.classList.add('open');
         });
+    }
+
+    function closeSidebar() {
+        sidebar.classList.remove('open');
+        if (overlay) overlay.classList.remove('open');
     }
 
     if (sidebarClose) {
-        sidebarClose.addEventListener('click', () => {
-            sidebar.classList.remove('open');
-        });
+        sidebarClose.addEventListener('click', closeSidebar);
+    }
+    
+    if (overlay) {
+        overlay.addEventListener('click', closeSidebar);
     }
 
-    // Close sidebar when clicking outside on mobile
+    // 5. Admin SPA Router
+    const navItems = document.querySelectorAll('.nav-item');
+    const adminScreens = document.querySelectorAll('.admin-screen');
+    const pageTitle = document.getElementById('page-title');
+
+    navItems.forEach(item => {
+        item.addEventListener('click', (e) => {
+            e.preventDefault();
+            const screenId = item.getAttribute('data-screen');
+            if (screenId) {
+                switchAdminScreen(screenId, item);
+            }
+        });
+    });
+
+    function switchAdminScreen(screenId, navItem) {
+        // Update Nav UI
+        navItems.forEach(nav => {
+            const link = nav.querySelector('.nav-link');
+            if (link) link.classList.remove('active');
+        });
+        navItem.querySelector('.nav-link').classList.add('active');
+
+        // Update Screen Visibility
+        adminScreens.forEach(screen => {
+            screen.classList.remove('active');
+            if (screen.id === `${screenId}-screen`) {
+                screen.classList.add('active');
+            }
+        });
+
+        // Update Title
+        if (pageTitle) {
+            const screenName = screenId.charAt(0).toUpperCase() + screenId.slice(1);
+            pageTitle.textContent = `Health Authority / ${screenName}`;
+        }
+
+        // Close sidebar on mobile after navigation
+        if (window.innerWidth <= 768) {
+            closeSidebar();
+        }
+
+        // Initialize specific charts if needed
+        if (screenId === 'interventions' && !document.querySelector('#intervention-progress-chart .apexcharts-canvas')) {
+            initInterventionCharts();
+        }
+    }
+
+    function initInterventionCharts() {
+        const options = {
+            series: [75],
+            chart: {
+                height: 250,
+                type: 'radialBar',
+            },
+            plotOptions: {
+                radialBar: {
+                    hollow: { size: '70%'},
+                    dataLabels: {
+                        name: { show: false },
+                        value: {
+                            fontSize: '22px',
+                            show: true,
+                            formatter: function (val) { return val + '%' }
+                        }
+                    }
+                }
+            },
+            labels: ['Progress'],
+            colors: ['#40916c']
+        };
+        const intChart = new ApexCharts(document.querySelector("#intervention-progress-chart"), options);
+        intChart.render();
+    }
+
+    // Close sidebar when clicking outside on mobile (fallback)
     document.addEventListener('click', (e) => {
         if (window.innerWidth <= 768 && 
             sidebar.classList.contains('open') && 
             !sidebar.contains(e.target) && 
-            !menuToggle.contains(e.target)) {
-            sidebar.classList.remove('open');
+            !menuToggle.contains(e.target) && 
+            e.target !== overlay) {
+            closeSidebar();
         }
     });
 });
