@@ -111,8 +111,9 @@ body {
     opacity: 0.8;
 }
 
-.sidebar-logo i {
-    font-size: 1.8rem;
+.sidebar-logo img {
+    height: 1.8rem;
+    width: auto;
 }
 
 .sidebar-logo span {
