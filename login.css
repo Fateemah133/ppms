@@ -184,3 +184,25 @@ body{
 .container.active .toggle-right{
     transform: translateX(200%);
 }
+
+@media (max-width: 1200px) {
+    .container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+   
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 0;
+        height: 100vh;
+        top: 0;
+        position: fixed;
+        left: -260px;
+        overflow-y: auto;
+        flex-direction: row;
+    }
+
+
+}
