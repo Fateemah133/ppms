@@ -185,4 +185,81 @@ body{
     transform: translateX(200%);
 }
 
+.mobile-logo {
+    display: none; /* hidden on desktop by default */
+}
+
+/* Mobile Responsive Design */
+.mobile-toggle-link {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .mobile-logo {
+        display: block;
+        height: 80px;
+        width: auto;
+        margin: 0 auto 15px;
+    }
+
+    .container {
+        min-height: 100vh;
+        width: 100%;
+        border-radius: 0;
+    }
+    
+    .form-container {
+        width: 100%;
+    }
+    
+    .toggle-container {
+        display: none;
+    }
+    
+    .sign-in, .sign-up {
+        width: 100%;
+        left: 0;
+        transform: none !important;
+        animation: none !important;
+    }
+    
+    .sign-in {
+        z-index: 2;
+        opacity: 1;
+        transition: opacity 0.3s;
+    }
+    
+    .sign-up {
+        z-index: 1;
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+    
+    .container.active .sign-in {
+        z-index: 1;
+        opacity: 0;
+    }
+    
+    .container.active .sign-up {
+        z-index: 2;
+        opacity: 1;
+    }
+
+    .mobile-toggle-link {
+        display: block;
+        margin-top: 25px;
+        text-align: center;
+        font-size: 14px;
+        color: #333;
+    }
+
+    .mobile-toggle-link span {
+        color: #2da0a8;
+        font-weight: 700;
+        cursor: pointer;
+        font-size: 14px;
+        margin-left: 5px;
+    }
+}
+
 
